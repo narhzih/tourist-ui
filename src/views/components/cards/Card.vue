@@ -59,8 +59,10 @@
           >rating ({{ tour.ratingsQuantity }})</span
         >
       </p>
-      <a href="#" @click.prevent="navigate" class="btn btn--green btn--small"
-        >Details</a
+      <router-link
+        :to="{ name: 'tour', params: { id: tour._id } }"
+        class="btn btn--green btn--small"
+        >Details</router-link
       >
     </div>
   </div>

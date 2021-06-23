@@ -19,7 +19,7 @@ export default {
       mapBoxToken:
         'pk.eyJ1IjoibmFyaHppaCIsImEiOiJja3E4NHRnOHUwY2x2Mm9wYnNmYnk5MWRnIn0.IBHKitVQ5OWGT6vS1DDSRg',
       center: [-118.113491, 34.111745],
-      map: {},
+      map: null,
     };
   },
 

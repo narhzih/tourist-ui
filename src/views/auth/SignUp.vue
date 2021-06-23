@@ -5,7 +5,13 @@
       <form action="#" class="form form--login">
         <div class="form__group">
           <label for="name" class="form__label">Your name</label>
-          <input type="text" id="name" class="form__input" required />
+          <input
+            type="text"
+            id="name"
+            class="form__input"
+            placeholder="Olawale Omosekeji"
+            required
+          />
         </div>
 
         <div class="form__group">
@@ -32,7 +38,7 @@
         </div>
 
         <div class="form__group">
-          <label for="c_password" class="form__label">Confirm Password</label>
+          <label for="c_password" class="form__label">Confirm password</label>
           <input
             type="password"
             id="c_password"

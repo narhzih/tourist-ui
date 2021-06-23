@@ -189,7 +189,7 @@ export default {
   components: { MapBox },
   data() {
     return {
-      tour: {},
+      tour: null,
     };
   },
 
@@ -200,8 +200,31 @@ export default {
         year: 'numeric',
       });
     },
+
+    tourWithImage: function () {
+      return {
+        ...this.tour,
+        imageCover:
+          this.tour.imageCover &&
+          require(`/src/assets/img/tours/${this.tour.imageCover}`),
+      };
+    },
   },
 
+  methods: {
+    setData: function (tour) {
+      this.tour = tour;
+    },
+  },
+  // beforeRouteEnter(to, from, next) {
+  //   axios
+  //     .get(`http://localhost:3000/api/v1/tours/${to.params.id}`)
+  //     .then((res) => {
+  //       console.log(res.data.data.data);
+  //       next((vm) => vm.setData(res.data.data.data));
+  //       // this.tour = res.data.data.data;
+  //     });
+  // },
   created() {
     axios
       .get(`http://localhost:3000/api/v1/tours/${this.$route.params.id}`)
