@@ -2,7 +2,11 @@
   <section class="section-header">
     <div class="header__hero">
       <div class="header__hero-overlay">&nbsp;</div>
-      <img :src="require(`/src/assets/img/tours/${tour.imageCover}`)" alt="" />
+      <img
+        :src="require(`/src/assets/img/tours/${tour.imageCover}`)"
+        alt=""
+        class="header__hero-img"
+      />
     </div>
     <div class="heading-box">
       <h1 class="heading-primary">
