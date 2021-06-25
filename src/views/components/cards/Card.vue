@@ -30,19 +30,19 @@
       </div>
       <div class="card__data">
         <svg class="card__icon">
-          <use xlink:href="~@/assets/img/icons.svg#icon-calendar"></use>
+          <use xlink:href="~@/assets/img/icon-style.svg#icon-calendar"></use>
         </svg>
         <span>{{ tourDate }}</span>
       </div>
       <div class="card__data">
         <svg class="card__icon">
-          <use xlink:href="~@/assets/img/icons.svg#icon-flag"></use>
+          <use xlink:href="~@/assets/img/icon-style.svg#icon-flag"></use>
         </svg>
         <span>{{ stops }} stops</span>
       </div>
       <div class="card__data">
         <svg class="card__icon">
-          <use xlink:href="~@/assets/img/icons.svg#icon-user"></use>
+          <use xlink:href="~@/assets/img/icon-style.svg#icon-user"></use>
         </svg>
         <span>{{ tour.maxGroupSize }} people</span>
       </div>

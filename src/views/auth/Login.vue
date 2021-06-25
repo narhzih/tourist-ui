@@ -35,8 +35,39 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Login',
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+
+  methods: {
+    validateInput: function () {
+      if (this.email === '' || this.password === '') {
+        alert('You cannot leave any input empty');
+        return false;
+      }
+
+      return true;
+    },
+
+    login: function () {
+      if (this.validateInput() !== false) {
+        axios
+          .post(`http://localhost:3000/api/v1/users/login`, {
+            email: this.email,
+            password: this.password,
+          })
+          .then((res) => console.log(res.data.data.data))
+          .catch((err) => console.log(err.response));
+      }
+    },
+  },
 };
 </script>
 

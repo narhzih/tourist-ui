@@ -18,6 +18,7 @@ const routes = [
         path: 'tour/:id',
         name: 'tour',
         component: () => import('../views/Tour'),
+        props: true,
       },
       {
         path: 'auth/login',
