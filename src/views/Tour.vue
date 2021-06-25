@@ -230,15 +230,6 @@ export default {
     },
   },
 
-  beforeRouteEnter(to, from, next) {
-    axios
-      .get(`http://localhost:3000/api/v1/tours/${to.params.id}`)
-      .then((res) => {
-        const tour = res.data.data.data;
-        console.log(tour);
-        next((vm) => vm.setData(tour));
-      });
-  },
   created() {
     axios
       .get(`http://localhost:3000/api/v1/tours/${this.$route.params.id}`)

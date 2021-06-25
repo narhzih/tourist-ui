@@ -2,7 +2,7 @@
   <main class="main">
     <div class="login-form">
       <h2 class="heading-secondary ma-bt-lg">Log into your account</h2>
-      <form action="#" class="form form--login">
+      <form action="#" class="form form--login" @submit.prevent="login">
         <div class="form__group">
           <label for="email" class="form__label">Email address</label>
           <input
@@ -10,6 +10,7 @@
             id="email"
             class="form__input"
             placeholder="you@example.com"
+            v-model="email"
             required
           />
         </div>
@@ -21,13 +22,14 @@
             id="password"
             class="form__input"
             placeholder="********"
+            v-model="password"
             minlength="8"
             required
           />
         </div>
 
         <div class="form__group">
-          <button class="btn btn--green">Login</button>
+          <button type="submit" class="btn btn--green">Login</button>
         </div>
       </form>
     </div>
@@ -49,7 +51,7 @@ export default {
   methods: {
     validateInput: function () {
       if (this.email === '' || this.password === '') {
-        alert('You cannot leave any input empty');
+        this.showAlert('error', 'You cannot leave any field empty');
         return false;
       }
 
@@ -64,7 +66,9 @@ export default {
             password: this.password,
           })
           .then((res) => console.log(res.data.data.data))
-          .catch((err) => console.log(err.response));
+          .catch((error) => {
+            this.showAlert('error', error.response.data.message);
+          });
       }
     },
   },

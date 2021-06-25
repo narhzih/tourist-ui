@@ -2,7 +2,7 @@
   <main class="main">
     <div class="login-form">
       <h2 class="heading-secondary ma-bt-lg">Create your account!</h2>
-      <form action="#" class="form form--login">
+      <form action="#" class="form form--login" @submit.prevent="signUp">
         <div class="form__group">
           <label for="name" class="form__label">Your name</label>
           <input
@@ -10,6 +10,7 @@
             id="name"
             class="form__input"
             placeholder="Olawale Omosekeji"
+            v-model="name"
             required
           />
         </div>
@@ -21,6 +22,7 @@
             id="email"
             class="form__input"
             placeholder="you@example.com"
+            v-model="email"
             required
           />
         </div>
@@ -32,6 +34,7 @@
             id="password"
             class="form__input"
             placeholder="********"
+            v-model="password"
             minlength="8"
             required
           />
@@ -44,13 +47,14 @@
             id="c_password"
             class="form__input"
             placeholder="********"
+            v-model="passwordConfirm"
             minlength="8"
             required
           />
         </div>
 
         <div class="form__group">
-          <button class="btn btn--green">Sing Up</button>
+          <button type="submit" class="btn btn--green">Sing Up</button>
         </div>
       </form>
     </div>
@@ -58,8 +62,67 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'SignUp',
+  data() {
+    return {
+      email: '',
+      name: '',
+      password: '',
+      passwordConfirm: '',
+    };
+  },
+
+  methods: {
+    validateInput: function () {
+      if (
+        this.email === '' ||
+        this.password === '' ||
+        this.name === '' ||
+        this.passwordConfirm === ''
+      ) {
+        this.showAlert('error', 'You cannot leave any field empty');
+        return false;
+      } else {
+        if (this.password !== this.passwordConfirm) {
+          {
+            this.showAlert('error', 'Passwords do not match');
+            return false;
+          }
+        }
+
+        if (this.password.length < 8) {
+          this.showAlert(
+            'error',
+            'Password length cannot be less than 8 characters'
+          );
+          return false;
+        }
+      }
+
+      return true;
+    },
+
+    signUp: function () {
+      if (this.validateInput() === true) {
+        axios
+          .post(`${this.$store.state.requestUri}/users/sign-up`, {
+            name: this.name,
+            email: this.email,
+            password: this.password,
+            passwordConfirm: this.passwordConfirm,
+          })
+          .then((res) => {
+            console.log(res.data.data.data);
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
+      }
+    },
+  },
 };
 </script>
 
