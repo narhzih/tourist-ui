@@ -28,17 +28,38 @@
         v-if="!isLoggedIn"
         >Sign up</router-link
       >
-      <a href="#" class="nav__el nav__el--logout" v-if="isLoggedIn">Log out</a>
+      <a
+        @click.prevent="logout"
+        href="#"
+        class="nav__el nav__el--logout"
+        v-if="isLoggedIn"
+        >Log out</a
+      >
     </nav>
   </header>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'AppHeader',
   methods: {
     navigate: function () {
       this.$router.push('/home');
+    },
+
+    logout: function () {
+      axios
+        .get(`${this.$store.state.server.requestUri}/users/logout`)
+        .then(() => {
+          this.$store.commit('logout');
+          this.showAlert('success', 'Logout successful');
+          this.$router.push('/home');
+        })
+        .catch((err) => {
+          this.showAlert('error', err.response.data.message);
+        });
     },
   },
 };

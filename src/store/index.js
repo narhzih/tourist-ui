@@ -11,7 +11,11 @@ export default createStore({
 
   getters: {
     isLoggedIn(state) {
-      return state.accessToken !== null && state.accessToken !== 'loggedout';
+      if (state.accessToken !== null && state.accessToken !== 'loggedout') {
+        return true;
+      } else {
+        return false;
+      }
     },
   },
 
