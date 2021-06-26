@@ -1,4 +1,18 @@
 const myMixin = {
+  computed: {
+    user: function () {
+      return this.$store.state.user;
+    },
+    isLoggedIn: function () {
+      return this.$store.getters.isLoggedIn;
+    },
+    filteredUsername: function () {
+      if (this.$store.getters.isLoggedIn) {
+        return this.$store.state.user.name.split(' ')[0];
+      }
+      return null;
+    },
+  },
   methods: {
     showAlert: function (type, msg) {
       this.hideAlert();

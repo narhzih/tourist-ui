@@ -108,7 +108,7 @@ export default {
     signUp: function () {
       if (this.validateInput() === true) {
         axios
-          .post(`${this.$store.state.requestUri}/users/sign-up`, {
+          .post(`${this.$store.state.server.requestUri}/users/signup`, {
             name: this.name,
             email: this.email,
             password: this.password,
@@ -116,12 +116,17 @@ export default {
           })
           .then((res) => {
             console.log(res.data.data.data);
+            console.log(this.$cookies.get('jwt'));
           })
           .catch((error) => {
             console.log(error.response);
           });
       }
     },
+  },
+
+  created() {
+    console.log(this.$store.state.server.requestUri);
   },
 };
 </script>

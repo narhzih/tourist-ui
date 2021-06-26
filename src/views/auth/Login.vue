@@ -61,16 +61,30 @@ export default {
     login: function () {
       if (this.validateInput() !== false) {
         axios
-          .post(`http://localhost:3000/api/v1/users/login`, {
+          .post(`${this.$store.state.server.requestUri}/users/login`, {
             email: this.email,
             password: this.password,
           })
-          .then((res) => console.log(res.data.data.data))
+          .then((res) => {
+            const accessToken = res.data.token;
+            const user = res.data.data.user;
+            this.$store.commit('login', {
+              accessToken,
+              user,
+            });
+
+            this.showAlert('success', 'Login successful');
+            this.$router.push('/home');
+          })
           .catch((error) => {
             this.showAlert('error', error.response.data.message);
           });
       }
     },
+  },
+
+  created() {
+    // console.log(this.$cookies.get('jwt'));
   },
 };
 </script>
