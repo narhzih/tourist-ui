@@ -13,18 +13,18 @@ const routes = [
       {
         path: 'home',
         name: 'overview',
-        component: () => import('../views/Overview'),
+        component: () => import('../views/pages/Overview'),
       },
       {
         path: 'tour/:id',
         name: 'tour',
-        component: () => import('../views/Tour'),
+        component: () => import('../views/pages/Tour'),
         props: true,
       },
       {
         path: 'auth/login',
         name: 'login',
-        component: () => import('../views/auth/Login'),
+        component: () => import('../views/pages/auth/Login'),
         meta: {
           noAuth: true,
         },
@@ -32,10 +32,22 @@ const routes = [
       {
         path: 'auth/signup',
         name: 'signUp',
-        component: () => import('../views/auth/SignUp'),
+        component: () => import('../views/pages/auth/SignUp'),
         meta: {
           noAuth: true,
         },
+      },
+      {
+        path: 'account',
+        name: 'account',
+        component: () => import('../views/pages/account/AccountBase'),
+        children: [
+          {
+            path: 'settings',
+            name: 'settings',
+            component: () => import('../views/pages/account/Settings'),
+          },
+        ],
       },
     ],
   },

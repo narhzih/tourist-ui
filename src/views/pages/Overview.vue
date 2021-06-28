@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Card from './components/cards/Card';
+import Card from '../components/cards/Card';
 import axios from 'axios';
 export default {
   name: 'Overview',

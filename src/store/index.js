@@ -44,6 +44,10 @@ export default createStore({
       localStorage.setItem('access_token', payload.accessToken);
       state.accessToken = payload.accessToken;
     },
+    updateUser(state, user) {
+      localStorage.setItem('user', JSON.stringify(user));
+      state.user = user;
+    },
   },
 
   actions: {},

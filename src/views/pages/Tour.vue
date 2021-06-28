@@ -186,7 +186,7 @@
 
 <script>
 import axios from 'axios';
-import MapBox from './components/mapBox';
+import MapBox from '../components/mapBox';
 
 export default {
   name: 'Tour',

@@ -11,14 +11,14 @@
     </div>
     <nav class="nav nav--user">
       <!--      <a href="#" class="nav__el" v-if="isLoggedIn">My bookings</a>-->
-      <a href="#" class="nav__el" v-if="isLoggedIn">
+      <router-link to="/account/settings" class="nav__el" v-if="isLoggedIn">
         <img
           :src="require(`/src/assets/img/users/${user.photo}`)"
           :alt="user.name"
           class="nav__user-img"
         />
         <span>{{ filteredUsername }}</span>
-      </a>
+      </router-link>
       <router-link to="/auth/login" class="nav__el" v-if="!isLoggedIn"
         >Log in</router-link
       >
@@ -31,7 +31,7 @@
       <a
         @click.prevent="logout"
         href="#"
-        class="nav__el nav__el--logout"
+        class="nav__el nav__el--cta"
         v-if="isLoggedIn"
         >Log out</a
       >
