@@ -38,7 +38,7 @@
         <!--          class="form__user-photo"-->
         <!--        />-->
         <img
-          :src="`${imageBaseUrl}/users/${user.photo}`"
+          :src="`${userImageBaseUrl}/${user.photo}`"
           alt="User photo"
           class="form__user-photo"
         />
@@ -106,7 +106,7 @@ export default {
           .then((res) => {
             const user = res.data.data.user;
             this.$store.commit('updateUser', user);
-            this.showAlert('Data updated successfully');
+            this.showAlert('success', 'Data updated successfully');
           })
           .catch((error) => console.log(error.response));
       }

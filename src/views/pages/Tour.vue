@@ -155,7 +155,7 @@
       <div class="cta">
         <div class="cta__img cta__img--logo">
           <img
-            :src="require(`/src/assets/img/logo-white.png`)"
+            :src="`${imageBaseUrl}/logo-white.png`"
             alt="Natours logo"
             class=""
           />
@@ -212,15 +212,6 @@ export default {
     // tour.images: function () {
     //   return this.tour.images;
     // },
-
-    tourWithImages: function () {
-      return {
-        ...this.tour,
-        imageCover:
-          this.tour.imageCover &&
-          require(`/src/assets/img/tours/${this.tour.imageCover}`),
-      };
-    },
   },
   methods: {
     setData: function (tour) {
