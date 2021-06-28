@@ -4,7 +4,7 @@
       <div class="header__hero">
         <div class="header__hero-overlay">&nbsp;</div>
         <img
-          :src="require(`/src/assets/img/tours/${tour.imageCover}`)"
+          :src="`${tourImageBaseUrl}/${tour.imageCover}`"
           alt=""
           class="header__hero-img"
         />
@@ -80,7 +80,7 @@
               :key="i"
             >
               <img
-                :src="require(`/src/assets/img/users/${guide.photo}`)"
+                :src="`${userImageBaseUrl}/${guide.photo}`"
                 :alt="`${guide.name}`"
                 class="overview-box__img"
               />
@@ -110,7 +110,7 @@
       <div class="picture-box" v-for="(image, i) in tour.images" :key="i">
         <img
           :class="`picture-box__img picture-box__img--${i + 1}`"
-          :src="require(`/src/assets/img/tours/${image}`)"
+          :src="`${tourImageBaseUrl}/${image}`"
           alt="The Park Camper Tour 1"
         />
       </div>
@@ -121,7 +121,7 @@
         <div class="reviews__card" v-for="(review, i) in tour.reviews" :key="i">
           <div class="reviews__avatar">
             <img
-              :src="require(`/src/assets/img/users/${review.user.photo}`)"
+              :src="`${userImageBaseUrl}/${review.user.photo}`"
               :alt="`${review.user.name}`"
               class="reviews__avatar-img"
             />
@@ -161,12 +161,12 @@
           />
         </div>
         <img
-          :src="require(`/src/assets/img/tours/${tour.images[0]}`)"
+          :src="`${tourImageBaseUrl}/${tour.images[0]}`"
           alt=""
           class="cta__img cta__img--1"
         />
         <img
-          :src="require(`/src/assets/img/tours/${tour.images[1]}`)"
+          :src="`${tourImageBaseUrl}/${tour.images[1]}`"
           alt=""
           class="cta__img cta__img--2"
         />

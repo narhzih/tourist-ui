@@ -4,7 +4,7 @@
       <div class="card__picture">
         <div class="card__picture-overlay">&nbsp;</div>
         <img
-          :src="require(`/src/assets/img/tours/${tour.imageCover}`)"
+          :src="`${tourImageBaseUrl}/${tour.imageCover}`"
           alt="Tour 1"
           class="card__picture-img"
         />

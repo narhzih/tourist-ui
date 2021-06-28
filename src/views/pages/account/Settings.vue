@@ -32,8 +32,13 @@
       </div>
 
       <div class="form__group form__photo-upload">
+        <!--        <img-->
+        <!--          :src="require(`/src/assets/img/users/${user.photo}`)"-->
+        <!--          alt="User photo"-->
+        <!--          class="form__user-photo"-->
+        <!--        />-->
         <img
-          :src="require(`/src/assets/img/users/${user.photo}`)"
+          :src="`${imageBaseUrl}/users/${user.photo}`"
           alt="User photo"
           class="form__user-photo"
         />

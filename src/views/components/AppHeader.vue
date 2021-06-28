@@ -13,7 +13,7 @@
       <!--      <a href="#" class="nav__el" v-if="isLoggedIn">My bookings</a>-->
       <router-link to="/account/settings" class="nav__el" v-if="isLoggedIn">
         <img
-          :src="require(`/src/assets/img/users/${user.photo}`)"
+          :src="`${imageBaseUrl}/users/${user.photo}`"
           :alt="user.name"
           class="nav__user-img"
         />

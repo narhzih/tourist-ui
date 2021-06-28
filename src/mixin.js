@@ -1,4 +1,11 @@
 const myMixin = {
+  data() {
+    return {
+      imageBaseUrl: 'http://127.0.0.1:3000/img',
+      tourImageBaseUrl: 'http://127.0.0.1:3000/img/tours',
+      userImageBaseUrl: 'http://127.0.0.1:3000/img/users',
+    };
+  },
   computed: {
     user: function () {
       return this.$store.state.user;
