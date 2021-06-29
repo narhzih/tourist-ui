@@ -47,6 +47,11 @@ const routes = [
             name: 'settings',
             component: () => import('../views/pages/account/Settings'),
           },
+          {
+            path: 'bookings/verify/:ref',
+            name: 'verify-bookings',
+            component: () => import('../views/pages/account/VerifyBookings'),
+          },
         ],
       },
     ],

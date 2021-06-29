@@ -177,7 +177,13 @@
             {{ tour.duration }} days. 1 adventure. Infinite memories. Make it
             yours today!
           </p>
-          <button class="btn btn--green span-all-rows">Book tour now!</button>
+
+          <button
+            @click.prevent="bookTour"
+            class="btn btn--green span-all-rows"
+          >
+            Book tour now!
+          </button>
         </div>
       </div>
     </section>
@@ -190,11 +196,14 @@ import MapBox from '../components/mapBox';
 
 export default {
   name: 'Tour',
-  components: { MapBox },
   // props: ['tour'],
+  components: { MapBox },
   data() {
     return {
       tour: null,
+      paymentEndpoint: 'https://api.flutterwave.com/v3/payments',
+      paymentKey: 'FLWPUBK_TEST-e85370dafc8f0f9792f40fda2aa847a0-X',
+      redirectUrl: 'http://localhost:8000/account/bookings/verify',
     };
   },
 
@@ -214,10 +223,62 @@ export default {
     // },
   },
   methods: {
+    generateRef: function (length) {
+      let ref = '';
+      const characters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      const charactersLength = characters.length;
+      for (let i = 0; i < length; i++) {
+        ref += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return ref;
+    },
     setData: function (tour) {
       if (tour) {
         this.tour = tour;
       }
+    },
+
+    bookTour: function () {
+      if (!this.$store.getters.isLoggedIn) {
+        this.showAlert('error', 'You need to login to book tour');
+        this.$router.push('/auth/login');
+        return false;
+      }
+
+      // Logic to book tour
+      axios
+        .post(
+          `${this.paymentEndpoint}`,
+          {
+            tx_ref: this.generateRef(16),
+            amount: this.tour.price,
+            currency: 'NGN',
+            redirect_url: this.redirectUrl,
+            payment_options: 'card',
+            meta: {
+              consumer_id: this.user._id,
+              consumer_mac: '',
+            },
+            customer: {
+              email: this.user.email,
+              phonenumber: '09030380719',
+              name: this.user.name,
+            },
+            customizations: {
+              title: 'Payment for tour: ' + this.tour.name,
+              description: this.tour.summary,
+              logo: `${this.imageBaseUrl}/logo-green.png`,
+            },
+          },
+          {
+            headers: {
+              Authorization: 'Bearer ' + this.paymentKey,
+            },
+          }
+        )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err.response));
     },
   },
 
