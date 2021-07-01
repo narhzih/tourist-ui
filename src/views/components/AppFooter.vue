@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="footer__logo">
       <img
-        :src="require('/src/assets/img/logo-green.png')"
+        :src="require('/src/assets/img/logo-green-round.png')"
         alt="Natours logo"
       />
     </div>

@@ -691,7 +691,7 @@ body {
     grid-row: 1; } }
 
 .footer__logo img {
-  height: 3rem; }
+  height: 8rem; }
 
 .footer__nav {
   list-style: none;
@@ -1310,10 +1310,21 @@ body {
   .heading-secondary {
     font-size: 2rem; }
   .cta__content {
-    margin-top: 18rem; } }
+    margin-top: 18rem; }
+  .login-form {
+    padding: 3rem 4rem; }
+  .footer__nav {
+    flex-direction: column;
+    justify-content: center; }
+    .footer__nav > *:not(:last-child) {
+      margin-bottom: 1rem; }
+  .footer__logo img {
+    height: 6rem; } }
 
 @media only screen and (max-width: 420px) {
   .section-header {
     height: 100vw; }
   .heading-box {
-    margin-top: 4rem; } }
+    margin-top: 4rem; }
+  .login-form {
+    padding: 2rem; } }

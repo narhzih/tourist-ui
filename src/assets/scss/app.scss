@@ -836,7 +836,7 @@ body {
   }
 }
 .footer__logo img {
-  height: 3rem;
+  height: 8rem;
 }
 .footer__nav {
   list-style: none;
@@ -1613,6 +1613,29 @@ body {
       margin-top: 18rem;
     }
   }
+
+  .login-form {
+    padding: 3rem 4rem;
+  }
+
+  .footer {
+    &__nav {
+      flex-direction: column;
+      justify-content: center;
+
+      & > * {
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    &__logo {
+      & img {
+        height: 6rem;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 420px) {
@@ -1622,6 +1645,10 @@ body {
   }
   .heading-box {
     margin-top: 4rem;
+  }
+
+  .login-form {
+    padding: 2rem;
   }
 }
 
