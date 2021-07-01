@@ -1,9 +1,10 @@
 const myMixin = {
   data() {
     return {
-      imageBaseUrl: 'http://127.0.0.1:3000/img',
-      tourImageBaseUrl: 'http://127.0.0.1:3000/img/tours',
-      userImageBaseUrl: 'http://127.0.0.1:3000/img/users',
+      base: 'https://tourist-ms.herokuapp.com',
+      imageBaseUrl: `https://tourist-ms.herokuapp.com/img`,
+      tourImageBaseUrl: `https://tourist-ms.herokuapp.com/img/tours`,
+      userImageBaseUrl: `https://tourist-ms.herokuapp.com/img/users`,
     };
   },
   computed: {
