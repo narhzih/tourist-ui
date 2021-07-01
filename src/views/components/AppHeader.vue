@@ -9,7 +9,7 @@
         alt="Natours logo"
       />
     </div>
-    <nav class="nav nav--user">
+    <nav :class="{ active: toggled === true }" class="nav nav--user">
       <!--      <a href="#" class="nav__el" v-if="isLoggedIn">My bookings</a>-->
       <router-link to="/account/settings" class="nav__el" v-if="isLoggedIn">
         <img
@@ -36,6 +36,17 @@
         >Log out</a
       >
     </nav>
+    <input type="checkbox" id="header__checkbox" />
+    <label
+      for="header__checkbox"
+      class="header__crumb"
+      :class="{ close: toggled === true }"
+      @click="toggle"
+    >
+      <span class="header__crumb--top"></span>
+      <span class="header__crumb--mid"></span>
+      <span class="header__crumb--bot"></span>
+    </label>
   </header>
 </template>
 
@@ -44,7 +55,15 @@ import axios from 'axios';
 
 export default {
   name: 'AppHeader',
+  data() {
+    return {
+      toggled: false,
+    };
+  },
   methods: {
+    toggle() {
+      this.toggled = !this.toggled;
+    },
     navigate: function () {
       this.$router.push('/home');
     },
