@@ -19,7 +19,7 @@ export default {
   },
 
   created() {
-    axios.get('http://localhost:3000/api/v1/tours/').then((res) => {
+    axios.get(`${this.$store.state.server.requestUri}/tours/`).then((res) => {
       this.tours = res.data.data.data;
     });
   },

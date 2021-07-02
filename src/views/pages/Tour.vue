@@ -284,7 +284,9 @@ export default {
 
   created() {
     axios
-      .get(`http://localhost:3000/api/v1/tours/${this.$route.params.id}`)
+      .get(
+        `${this.$store.state.server.requestUri}/tours/${this.$route.params.id}`
+      )
       .then((res) => {
         this.tour = res.data.data.data;
       });
